@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="21ai WhatsApp Booking Assistant - Never miss another booking. Let customers book on WhatsApp with 24/7 replies, calendar booking, and instant confirmations.">
+    <meta name="keywords" content="WhatsApp booking, booking assistant, AI booking system, calendar booking, customer engagement">
+    <meta name="author" content="21ai">
+    <meta property="og:title" content="21ai WhatsApp Booking Assistant — Early Access">
+    <meta property="og:description" content="Never miss another booking. Let customers book on WhatsApp with 24/7 automated replies and instant confirmations.">
+    <meta property="og:type" content="website">
+    <title>21ai WhatsApp Booking Assistant — Early Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #5B4BFF 0%, #8B7FFF 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #5B4BFF 0%, #00E5A8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background-color: #5B4BFF;
+            color: white;
+            border-radius: 9999px;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(91, 75, 255, 0.3);
+            filter: brightness(1.1);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease-out;
+        }
+        
+        .card-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #EEF0FF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5B4BFF;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease-out;
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            color: #5B4BFF;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease-out;
+            color: #5B4BFF;
+        }
+        
+        .faq-answer {
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            max-height: 500px;
+        }
+        
+        .faq-answer.hidden {
+            display: none;
+            max-height: 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-out;
+            border: 1px solid #EEF0FF;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        
+        .star {
+            color: #FFD700;
+            display: inline-block;
+        }
+        
+        .mobile-menu {
+            transition: all 0.3s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+        
+        .header-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Header & Navigation -->
+    <header class="header-sticky">
+        <nav class="max-w-7xl mx-auto px-8 md:px-16 py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-2xl font-bold gradient-text">21ai</div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-12">
+                <a href="#features" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium">Features</a>
+                <a href="#benefits" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium">Benefits</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium">Testimonials</a>
+                <a href="#about" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium">About</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button md:hidden text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-8 py-6 flex flex-col gap-4">
+                <a href="#features" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium py-2">Features</a>
+                <a href="#benefits" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium py-2">Benefits</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium py-2">Testimonials</a>
+                <a href="#about" class="text-gray-700 hover:text-[#5B4BFF] transition-colors duration-300 font-medium py-2">About</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 md:py-40 px-8 md:px-16 overflow-hidden">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#EEF0FF] rounded-full blur-3xl opacity-40 -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#EEF0FF] rounded-full blur-3xl opacity-40 -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 leading-tight">
+                            Never miss another booking
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-600 font-medium mb-4">
+                            Let customers book on WhatsApp
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Automate your booking process with AI-powered WhatsApp replies, seamless calendar integration, and instant confirmations. Available 24/7 to capture every opportunity.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://shorturl.at/4bZd9//gmail.com" class="btn-primary text-center">Get Early Access</a>
+                        <button class="px-8 py-3 rounded-full border-2 border-[#5B4BFF] text-[#5B4BFF] font-semibold hover:bg-[#5B4BFF] hover:text-white transition-all duration-300 hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+                        <div>
+                            <div class="text-3xl font-bold text-[#5B4BFF]">24/7</div>
+                            <p class="text-sm text-gray-600 mt-2">Automated replies</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-[#00E5A8]">Instant</div>
+                            <p class="text-sm text-gray-600 mt-2">Confirmations</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-[#5B4BFF]">Zero</div>
+                            <p class="text-sm text-gray-600 mt-2">Missed bookings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Illustration -->
+                <div class="hidden lg:flex items-center justify-center">
+                    <div class="relative w-full h-96">
+                        <!-- Phone Mockup -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-64 h-96 bg-gradient-to-br from-[#5B4BFF] to-[#8B7FFF] rounded-3xl shadow-2xl p-4 flex flex-col">
+                                <div class="bg-white rounded-2xl flex-1 p-4 flex flex-col gap-3 overflow-hidden">
+                                    <!-- Chat Bubbles -->
+                                    <div class="flex justify-end">
+                                        <div class="bg-[#5B4BFF] text-white rounded-2xl rounded-tr-none px-4 py-2 text-sm max-w-xs">I'd like to book an appointment</div>
+                                    </div>
+                                    <div class="flex justify-start">
+                                        <div class="bg-gray-200 text-gray-900 rounded-2xl rounded-tl-none px-4 py-2 text-sm max-w-xs">Great! Let me check available times...</div>
+                                    </div>
+                                    <div class="flex justify-start">
+                                        <div class="bg-gray-200 text-gray-900 rounded-2xl rounded-tl-none px-4 py-2 text-sm max-w-xs">How about Tuesday at 2 PM?</div>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <div class="bg-[#00E5A8] text-gray-900 rounded-2xl rounded-tr-none px-4 py-2 text-sm max-w-xs font-semibold">Perfect! ✓</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 md:py-32 px-8 md:px-16 bg-[#EEF0FF] bg-opacity-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+                    Powerful Features for Modern Booking
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Everything you need to streamline your booking process and delight your customers with instant, intelligent responses.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+                <!-- Feature 1: 24/7 WhatsApp Replies -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">24/7 WhatsApp Replies</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Never let a message go unanswered. Our AI-powered system responds instantly to customer inquiries on WhatsApp, day and night, ensuring no opportunity slips away.
+                    </p>
+                </div>
+                
+                <!-- Feature 2: Calendar Integration -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Seamless Calendar Booking</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Integrated calendar management that syncs with your existing systems. Customers can book directly through WhatsApp with real-time availability updates and automatic scheduling.
+                    </p>
+                </div>
+                
+                <!-- Feature 3: Instant Confirmations -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Instant Confirmations</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Send immediate booking confirmations with all relevant details. Customers receive appointment times, location information, and reminders automatically through WhatsApp.
+                    </p>
+                </div>
+                
+                <!-- Feature 4: Smart Availability -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Smart Availability Management</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Intelligent scheduling that learns your preferences and automatically suggests optimal time slots. Handles multiple team members and resource allocation effortlessly.
+                    </p>
+                </div>
+                
+                <!-- Feature 5: Customer Insights -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics & Insights</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Gain valuable insights into customer behavior, booking patterns, and conversion metrics. Track performance and optimize your booking process with data-driven recommendations.
+                    </p>
+                </div>
+                
+                <!-- Feature 6: Easy Integration -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="feature-icon mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.658 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Easy Integration</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Connects seamlessly with your existing tools and platforms. No complex setup required—get up and running in minutes with our simple, intuitive integration process.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 md:py-32 px-8 md:px-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+                    Transform Your Booking Experience
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    See the real-world impact of automating your booking process with AI-powered WhatsApp integration.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20">
+                <!-- Benefit 1 -->
+                <div class="flex gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-[#00E5A8] bg-opacity-20">
+                            <svg class="h-8 w-8 text-[#00E5A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Capture More Leads</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Never lose a potential customer due to slow response times. Our instant WhatsApp replies ensure every inquiry is addressed immediately, dramatically increasing your conversion rates and capturing opportunities 24/7.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="flex gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-[#00E5A8] bg-opacity-20">
+                            <svg class="h-8 w-8 text-[#00E5A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Save Staff Time</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Eliminate repetitive booking inquiries and manual scheduling tasks. Free up your team to focus on delivering exceptional service and growing your business instead of managing administrative overhead.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="flex gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-[#00E5A8] bg-opacity-20">
+                            <svg class="h-8 w-8 text-[#00E5A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Reduce Missed Bookings</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Automated confirmations and reminders ensure customers don't forget their appointments. Reduce no-shows and cancellations while improving customer satisfaction and revenue stability.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="flex gap-8 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-[#00E5A8] bg-opacity-20">
+                            <svg class="h-8 w-8 text-[#00E5A8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Enhanced Customer Experience</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            Provide a seamless, modern booking experience that customers love. Quick responses and easy scheduling build trust and loyalty while positioning your business as forward-thinking and customer-focused.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section with Background -->
+    <section class="relative py-20 md:py-32 px-8 md:px-16 overflow-hidden" style="background-image: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop'); background-size: cover; background-position: center;">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-white">
+                Ready to Transform Your Booking Process?
+            </h2>
+            <p class="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto mb-12">
+                Join forward-thinking businesses that are already capturing more leads and saving valuable staff time with 21ai WhatsApp Booking Assistant.
+            </p>
+            <a href="https://shorturl.at/4bZd9//gmail.com" class="btn-primary inline-block">Get Early Access Today</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-32 px-8 md:px-16 bg-[#EEF0FF] bg-opacity-30">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+                    Loved by Businesses Everywhere
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    See what our early access users are saying about how 21ai has transformed their booking experience.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "21ai has completely transformed how we handle bookings. We've gone from missing 15-20% of inquiries to capturing nearly every lead. The WhatsApp integration is seamless, and our customers love how quick everything is."
+                    </p>
+                    <div>
+                        <p class="font-bold text-gray-900">Sarah Mitchell</p>
+                        <p class="text-gray-600 text-sm">Owner, Elite Fitness Studio</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "The time savings alone are worth it. What used to take my assistant 3 hours a day to manage is now handled automatically. We've reduced no-shows by 40% and our team is much happier."
+                    </p>
+                    <div>
+                        <p class="font-bold text-gray-900">James Rodriguez</p>
+                        <p class="text-gray-600 text-sm">Manager, Luxe Salon & Spa</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "Customers appreciate the instant responses. We've seen a significant increase in booking confirmations since implementing 21ai. It feels like having an extra team member working 24/7."
+                    </p>
+                    <div>
+                        <p class="font-bold text-gray-900">Emma Thompson</p>
+                        <p class="text-gray-600 text-sm">Consultant, Premier Coaching Services</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="flex gap-1 mb-4">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "The setup was incredibly easy, and the support team is fantastic. We integrated 21ai in less than an hour and immediately started seeing results. Best investment we've made for our business this year."
+                    </p>
+                    <div>
+                        <p class="font-bold text-gray-900">Michael Chen</p>
+                        <p class="text-gray-600 text-sm">Director, Wellness Center Network</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 md:py-32 px-8 md:px-16">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+                    About 21ai
+                </h2>
+            </div>
+            
+            <div class="space-y-8 text-lg text-gray-700 leading-relaxed">
+                <p>
+                    Founded in 2024, 21ai emerged from a simple observation: countless businesses were losing revenue due to slow response times and missed booking opportunities. Our team of AI specialists and business professionals came together with a mission to solve this problem using cutting-edge artificial intelligence and WhatsApp's ubiquitous messaging platform. We recognized that customers increasingly prefer WhatsApp for business communication, yet most booking systems hadn't adapted to this shift. 21ai was born from this insight, combining advanced AI technology with the messaging platform customers already love and use daily.
+                </p>
+                
+                <p>
+                    Our core mission is to empower businesses of all sizes with intelligent automation that feels human and personal. We believe that every business deserves access to enterprise-grade booking technology without the enterprise-grade complexity or cost. We're committed to continuously improving our platform based on customer feedback, staying at the forefront of AI innovation, and building a community of successful businesses that have embraced modern booking solutions. At 21ai, we're not just building software—we're building the future of customer engagement, one booking at a time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16 md:py-20 px-8 md:px-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-12">
+                <!-- Brand Column -->
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4">21ai</div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Transform your booking process with AI-powered WhatsApp automation. Never miss another customer.
+                    </p>
+                </div>
+                
+                <!-- Product Column -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">Features</a></li>
+                        <li><a href="#benefits" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">Benefits</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">Testimonials</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">About</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources Column -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://shorturl.at/4bZd9//gmail.com" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">Get Early Access</a></li>
+                        <li><a href="mailto:twentyone2026@gmail.com" class="text-gray-400 hover:text-[#00E5A8] transition-colors duration-300">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Connect Column -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#5B4BFF] transition-colors duration-300">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#5B4BFF] transition-colors duration-300">
+                            <i class="fab fa-linkedin text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#5B4BFF] transition-colors duration-300">
+                            <i class="fab fa-facebook text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#5B4BFF] transition-colors duration-300">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2025 21ai. All rights reserved.
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Email: <a href="mailto:twentyone2026@gmail.com" class="hover:text-[#00E5A8] transition-colors duration-300">twentyone2026@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-times');
+                    }
+                });
+
+                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // FAQ Accordion Toggle (if FAQ section exists)
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', () => {
+                        const answer = item.querySelector('.faq-answer');
+                        const isOpen = !answer.classList.contains('hidden');
+                        
+                        // Close all other FAQ items
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.querySelector('.faq-answer')?.classList.add('hidden');
+                                otherItem.querySelector('.faq-icon')?.classList.remove('rotate-180');
+                            }
+                        });
+                        
+                        // Toggle current item
+                        answer?.classList.toggle('hidden');
+                        item.querySelector('.faq-icon')?.classList.toggle('rotate-180');
+                    });
+                }
+            });
+
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
